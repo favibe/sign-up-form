@@ -1,5 +1,360 @@
-Wolfgang Hasselmann
-wolfgang_hasselmann image by img1
+/* --- Root Variables --- */
+:root {
+    --color-dark-green: #375935;
+    --color-light-green: #486A45;
+    --color-red: #c9514e;
+    --color-background: #f1f1f1;
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-light-gray: #e5e7eb;
+    --color-text-gray: #374151;
+    --color-label-gray: #6b7280;
+    --color-form-bg: #fdfdfd; /* A slightly off-white for the form background */
+}
 
+/* --- Global Reset & Base Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    min-height: 100vh;
+    background-color: var(--color-background);
+    font-family: 'Inter', Arial, sans-serif; /* Changed to 'Inter' for a modern look */
+    color: var(--color-text-gray);
+    display: flex; /* Ensure body takes up full height and centers content if needed */
+    justify-content: center;
+    align-items: center;
+}
 
-Halie West img 2
+/* --- Main Layout Container --- */
+.container {
+    display: flex;
+    min-height: 100vh; /* Takes full viewport height on desktop */
+    width: 100%;
+    max-width: 1200px; /* Max width for the entire form-image block */
+    background-color: var(--color-white);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* More prominent shadow */
+}
+
+/* --- 1. Form Container (Left) --- */
+.form-container {
+    flex: 1 1 60%; /* Takes 60% of the space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically centers the content within the form area */
+    padding: 3rem 4rem; /* More generous padding */
+    background-color: var(--color-form-bg);
+}
+
+.header-text {
+    margin-bottom: 2.5rem; /* Increased spacing */
+    color: var(--color-text-gray);
+}
+.header-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; /* Larger heading */
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--color-dark-green); /* Heading color */
+}
+.header-text p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* --- The Form Layout --- */
+form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two equal columns for inputs */
+    gap: 1.5rem 2.5rem; /* Row gap and Column gap */
+    width: 100%;
+    background-color: var(--color-white); /* White background for the form fields section */
+    padding: 2rem; /* Padding around the input fields */
+    border-radius: 8px; /* Slightly rounded corners */
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.05); /* Subtle inner shadow */
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column; /* Stacks label on top of input */
+    align-items: flex-start; /* Aligns items to the left */
+}
+label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--color-label-gray);
+    margin-bottom: 0.4rem; /* Spacing between label and input */
+}
+input {
+    padding: 0.9rem 1.1rem; /* More padding inside inputs */
+    border: 1px solid var(--color-light-gray);
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 100%; /* Important: makes input take full width of its grid cell */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    color: var(--color-text-gray);
+}
+input:focus {
+    outline: none;
+    border-color: var(--color-dark-green);
+    box-shadow: 0 0 0 3px rgba(55, 89, 53, 0.25); /* Stronger focus shadow */
+}
+/* Validation Error Styling */
+input.error {
+    border-color: var(--color-red);
+}
+input.error:focus {
+    box-shadow: 0 0 0 3px rgba(201, 81, 78, 0.35);
+}
+.error-message {
+    color: var(--color-red);
+    font-size: 0.8rem;
+    min-height: 1rem; /* Prevents layout jump when message appears */
+    margin-top: 0.4rem;
+    padding-left: 0.2rem;
+}
+
+/* --- Full Width Items (Button & Login Link) --- */
+.full-width {
+    grid-column: 1 / -1; /* Makes element span both columns */
+    text-align: center; /* Center content of full-width items */
+}
+.submit {
+    margin-top: 1.5rem;
+}
+button {
+    width: 100%;
+    max-width: 350px; /* Slightly wider button */
+    display: block;
+    margin: 0 auto; /* Centers the button */
+    padding: 1.1rem 1.5rem; /* More padding */
+    background-color: var(--color-dark-green);
+    color: var(--color-white);
+    border: none;
+    border-radius: 8px; /* More rounded button */
+    font-size: 1.15rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+button:hover {
+    background-color: var(--color-light-green);
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 7px 20px rgba(0,0,0,0.15);
+}
+button:active {
+    transform: translateY(0); /* Reset on click */
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.login-link {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+}
+.login-link a {
+    color: var(--color-dark-green);
+    font-weight: 700; /* Bolder link */
+    text-decoration: none;
+}
+.login-link a:hover {
+    text-decoration: underline;
+    color: var(--color-light-green);
+}
+
+/* --- 2. Image Container (Right) --- */
+.img-container {
+    flex: 1 1 40%; /* Takes 40% of the space */
+    position: relative;
+    background-color: var(--color-light-green); /* Fallback background */
+    display: flex; /* Ensures content inside is also flex-controlled */
+    flex-direction: column; /* Stack logo and credits vertically */
+    justify-content: center; /* Center them */
+    align-items: center; /* Center them */
+}
+.img-container > img {
+    position: absolute; /* Allows img to be background-like */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Fills container, cropping as needed */
+    opacity: 0.7; /* Slightly desaturate/darken the image */
+    z-index: 1; /* Ensures text is above image */
+}
+.logo-container {
+    position: relative; /* Relative to img-container */
+    background-color: rgba(0, 0, 0, 0.6); /* Darker overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 120px; /* Taller logo bar */
+    gap: 1.5rem; /* More space between logo and text */
+    z-index: 2; /* Above the image */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.logo-container > img { /* Refers to the Odin logo image */
+    height: 80px; /* Larger logo */
+    width: auto;
+    object-fit: contain; /* Ensure logo is not cropped */
+    opacity: 1; /* Full opacity for the logo image */
+    position: static; /* Remove absolute positioning */
+}
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem; /* Larger logo text */
+    color: var(--color-white);
+    letter-spacing: 0.15em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Text shadow for better visibility */
+}
+.img-credits {
+    position: absolute;
+    bottom: 1.5rem;
+    width: 100%;
+    font-size: 0.8rem;
+    color: var(--color-white);
+    text-align: center;
+    z-index: 2; /* Above the image */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+.img-credits a {
+    color: #a4eaff; /* Slightly brighter light blue for links */
+    text-decoration: underline;
+    font-weight: 500;
+}
+.img-credits a:hover {
+    color: var(--color-white);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) { /* Tablet and smaller desktops */
+    .container {
+        max-width: 90%;
+        min-height: auto; /* Allow height to adjust */
+        margin: 2rem auto; /* Add margin for spacing */
+    }
+    .form-container {
+        padding: 2.5rem 3rem;
+    }
+    .header-text h1 {
+        font-size: 1.8rem;
+    }
+    form {
+        gap: 1.25rem 2rem;
+        padding: 1.5rem;
+    }
+    input {
+        padding: 0.8rem 1rem;
+    }
+    .img-container {
+        flex: 1 1 35%; /* Adjust image container size */
+    }
+    .logo-container {
+        height: 100px;
+        top: 25%; /* Adjust position of logo bar */
+    }
+    .logo-container > img {
+        height: 65px;
+    }
+    .logo-text {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) { /* Small tablets and mobile phones */
+    body {
+        align-items: flex-start; /* Align to top on mobile */
+    }
+    .container {
+        flex-direction: column; /* Stack image on top of form */
+        max-width: 100%;
+        margin: 0;
+        box-shadow: none; /* Remove shadow on full-width mobile */
+    }
+    .form-container {
+        order: 2; /* Ensures form is below image in stacked layout */
+        flex-basis: auto; /* Adjust height dynamically */
+        padding: 2rem 1.5rem; /* Smaller padding for mobile */
+    }
+    .header-text {
+        margin-bottom: 2rem;
+    }
+    .header-text h1 {
+        font-size: 1.6rem;
+        color: var(--color-text-gray); /* Change heading color to match text */
+    }
+    form {
+        grid-template-columns: 1fr; /* Single column for inputs on mobile */
+        gap: 1rem;
+        padding: 1rem;
+    }
+    button {
+        max-width: 100%; /* Button takes full width on mobile */
+        font-size: 1rem;
+        padding: 0.9rem 1.2rem;
+    }
+    .login-link {
+        margin-top: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .img-container {
+        order: 1; /* Ensures image is on top when stacked */
+        flex-basis: 30vh; /* Fixed height for image on mobile */
+        height: 30vh;
+        min-height: 200px; /* Minimum height for the image */
+        justify-content: center; /* Center logo container in new img-container */
+        align-items: center;
+    }
+    .img-container > img {
+        opacity: 0.8; /* Slightly less opaque on mobile */
+    }
+    .logo-container {
+        position: static; /* Remove absolute positioning on mobile */
+        height: 100px;
+        top: auto;
+        transform: none;
+        box-shadow: none;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    .logo-container > img {
+        height: 55px;
+    }
+    .logo-text {
+        font-size: 2.8rem;
+        letter-spacing: 0.1em;
+    }
+    .img-credits {
+        display: none; /* Hide credits on very small screens */
+    }
+}
+
+@media (max-width: 480px) { /* Extra small phones */
+    .form-container {
+        padding: 1.5rem 1rem;
+    }
+    .header-text h1 {
+        font-size: 1.4rem;
+    }
+    form {
+        padding: 0.75rem;
+    }
+    label {
+        font-size: 0.7rem;
+    }
+    input {
+        padding: 0.7rem 0.9rem;
+        font-size: 0.9rem;
+    }
+    .logo-container {
+        height: 80px;
+    }
+    .logo-container > img {
+        height: 45px;
+    }
+    .logo-text {
+        font-size: 2.2rem;
+    }
+}
